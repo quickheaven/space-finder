@@ -11,6 +11,7 @@ A full-stack serverless application built with AWS and TypeScript, organized as 
 ## Tech Stack
 
 **Infrastructure**
+
 - AWS CDK + CloudFormation
 - Amazon Cognito (User Pools + Identity Pools)
 - Amazon API Gateway + AWS Lambda
@@ -18,12 +19,14 @@ A full-stack serverless application built with AWS and TypeScript, organized as 
 - Amazon S3
 
 **Frontend**
+
 - React 18 + TypeScript
 - Vite
 - AWS Amplify (auth)
 - AWS SDK v3
 
 **Monorepo**
+
 - pnpm workspaces
 - Turborepo
 - GitHub Actions CI/CD
