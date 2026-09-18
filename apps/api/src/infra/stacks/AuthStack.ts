@@ -139,7 +139,14 @@ export class AuthStack extends Stack {
     this.adminRole.addToPolicy(
       new PolicyStatement({
         effect: Effect.ALLOW,
-        actions: ["s3:ListAllMyBuckets", "s3:PutObject", "s3:PutObjectAcl"],
+        actions: ["s3:ListAllMyBuckets"],
+        resources: ["*"],
+      }),
+    );
+    this.adminRole.addToPolicy(
+      new PolicyStatement({
+        effect: Effect.ALLOW,
+        actions: ["s3:PutObject", "s3:PutObjectAcl"],
         resources: [photosBucket.bucketArn + "/*"],
       }),
     );
