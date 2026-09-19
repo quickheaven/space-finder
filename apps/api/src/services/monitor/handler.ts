@@ -1,8 +1,8 @@
 import { SNSEvent } from "aws-lambda";
 
-const webHookUrl = process.env.SLACK_WEBHOOK_URL!;
-
 async function handler(event: SNSEvent, _context: unknown) {
+  const webHookUrl = process.env.SLACK_WEBHOOK_URL!;
+
   for (const record of event.Records) {
     await fetch(webHookUrl, {
       method: "POST",

@@ -10,6 +10,16 @@
             "cwd": "${workspaceFolder}/apps/api",
             "envFile": "${workspaceFolder}/apps/api/.env",
             "console": "integratedTerminal"
-        }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug monitor.test.ts",
+            "program": "${workspaceFolder}/apps/api/node_modules/jest/bin/jest.js",
+            "args": ["test/monitor.test.ts", "--no-coverage", "--runInBand"],
+            "cwd": "${workspaceFolder}/apps/api",
+            "envFile": "${workspaceFolder}/apps/api/.env",
+            "console": "integratedTerminal"
+        }        
     ]
 }
