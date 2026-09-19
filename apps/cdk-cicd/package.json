@@ -20,6 +20,7 @@
     "@types/node": "catalog:",
     "aws-cdk": "catalog:",
     "eslint": "catalog:",
+    "esbuild": "catalog:",
     "jest": "catalog:",
     "prettier": "catalog:",
     "ts-jest": "catalog:",

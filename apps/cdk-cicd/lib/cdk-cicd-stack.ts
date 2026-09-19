@@ -71,7 +71,12 @@ export class CdkCicdStack extends cdk.Stack {
 
     testStage.addPre(
       new CodeBuildStep("unit-tests", {
-        commands: ["cd cdk-cicd", "npm ci", "npm test"],
+        commands: [
+          "npm install -g pnpm",
+          "pnpm config set store-dir .pnpm-store",
+          "pnpm install --frozen-lockfile",
+          "pnpm --filter cdk-cicd test",
+        ],
       }),
     );
   }
