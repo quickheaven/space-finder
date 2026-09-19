@@ -39,4 +39,31 @@ describe("Monitor stack test suite", () => {
       },
     ]);
   });
+
+  test("Alarm actions", () => {
+    const alarmActionsCapture = new Capture();
+    monitorStackTemplate.hasResourceProperties("AWS::CloudWatch::Alarm", {
+      AlarmActions: alarmActionsCapture,
+    });
+
+    expect(alarmActionsCapture.asArray()).toEqual([
+      {
+        Ref: expect.stringMatching(/^AlarmTopic/),
+      },
+    ]);
+  });
+
+  test("Monitor stack snapshot", () => {
+    expect(monitorStackTemplate.toJSON()).toMatchSnapshot();
+  });
+
+  test("Lambda stack snapshot", () => {
+    const lambda = monitorStackTemplate.findResources("AWS::Lambda::Function");
+    expect(lambda).toMatchSnapshot();
+  });
+
+  test("SnsTopic stack snapshot", () => {
+    const snsTopic = monitorStackTemplate.findResources("AWS::SNS::Topic");
+    expect(snsTopic).toMatchSnapshot();
+  });
 });
