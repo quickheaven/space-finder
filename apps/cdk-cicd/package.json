@@ -1,0 +1,34 @@
+{
+  "name": "cdk-cicd",
+  "version": "0.1.0",
+  "bin": {
+    "cdk-cicd": "bin/cdk-cicd.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit",
+    "watch": "tsc -w",
+    "test": "jest --passWithNoTests",
+    "cdk": "cdk",
+    "format": "prettier --write \"bin/**/*.ts\" \"lib/**/*.ts\" \"test/**/*.ts\""
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/jest": "catalog:",
+    "@types/node": "catalog:",
+    "aws-cdk": "catalog:",
+    "eslint": "catalog:",
+    "jest": "catalog:",
+    "prettier": "catalog:",
+    "ts-jest": "catalog:",
+    "ts-node": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "catalog:",
+    "constructs": "catalog:",
+    "source-map-support": "catalog:"
+  }
+}

@@ -99,6 +99,9 @@ catalogs:
     jest:
       specifier: ^30.3.0
       version: 30.4.2
+    prettier:
+      specifier: ^3.7.4
+      version: 3.8.4
     react:
       specifier: ^18.3.1
       version: 18.3.1
@@ -222,6 +225,52 @@ importers:
       jest:
         specifier: 'catalog:'
         version: 30.4.2(@types/node@25.9.3)(ts-node@10.9.2(@types/node@25.9.3)(typescript@5.9.2))
+      ts-jest:
+        specifier: 'catalog:'
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(esbuild@0.17.19)(jest-util@30.4.1)(jest@30.4.2(@types/node@25.9.3)(ts-node@10.9.2(@types/node@25.9.3)(typescript@5.9.2)))(typescript@5.9.2)
+      ts-node:
+        specifier: 'catalog:'
+        version: 10.9.2(@types/node@25.9.3)(typescript@5.9.2)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.2
+
+  apps/cdk-cicd:
+    dependencies:
+      aws-cdk-lib:
+        specifier: 'catalog:'
+        version: 2.150.0(constructs@10.6.0)
+      constructs:
+        specifier: 'catalog:'
+        version: 10.6.0
+      source-map-support:
+        specifier: 'catalog:'
+        version: 0.5.21
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@types/jest':
+        specifier: 'catalog:'
+        version: 30.0.0
+      '@types/node':
+        specifier: 'catalog:'
+        version: 25.9.3
+      aws-cdk:
+        specifier: 'catalog:'
+        version: 2.150.0
+      eslint:
+        specifier: 'catalog:'
+        version: 9.39.4
+      jest:
+        specifier: 'catalog:'
+        version: 30.4.2(@types/node@25.9.3)(ts-node@10.9.2(@types/node@25.9.3)(typescript@5.9.2))
+      prettier:
+        specifier: 'catalog:'
+        version: 3.8.4
       ts-jest:
         specifier: 'catalog:'
         version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(esbuild@0.17.19)(jest-util@30.4.1)(jest@30.4.2(@types/node@25.9.3)(ts-node@10.9.2(@types/node@25.9.3)(typescript@5.9.2)))(typescript@5.9.2)
