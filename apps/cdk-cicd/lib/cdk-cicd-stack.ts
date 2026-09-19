@@ -14,10 +14,7 @@ export class CdkCicdStack extends cdk.Stack {
     new CodePipeline(this, "AwesomePipeline", {
       pipelineName: "AwesomePipeline",
       synth: new ShellStep("Synth", {
-        input: CodePipelineSource.gitHub(
-          "quickheaven/space-finder",
-          "main",
-        ),
+        input: CodePipelineSource.gitHub("quickheaven/space-finder", "main"),
         commands: [
           "pnpm install --frozen-lockfile",
           "pnpm --filter cdk-cicd exec cdk synth",
