@@ -6,7 +6,11 @@
             "request": "launch",
             "name": "Debug auth.test.ts",
             "program": "${workspaceFolder}/apps/api/node_modules/jest/bin/jest.js",
-            "args": ["test/auth.test.ts", "--no-coverage", "--runInBand"],
+            "args": [
+                "test/auth.test.ts",
+                "--no-coverage",
+                "--runInBand"
+            ],
             "cwd": "${workspaceFolder}/apps/api",
             "envFile": "${workspaceFolder}/apps/api/.env",
             "console": "integratedTerminal"
@@ -16,10 +20,30 @@
             "request": "launch",
             "name": "Debug monitor.test.ts",
             "program": "${workspaceFolder}/apps/api/node_modules/jest/bin/jest.js",
-            "args": ["test/monitor.test.ts", "--no-coverage", "--runInBand"],
+            "args": [
+                "test/monitor.test.ts",
+                "--no-coverage",
+                "--runInBand"
+            ],
             "cwd": "${workspaceFolder}/apps/api",
             "envFile": "${workspaceFolder}/apps/api/.env",
             "console": "integratedTerminal"
-        }        
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest Current File",
+            "program": "${workspaceFolder}/apps/api/node_modules/jest/bin/jest.js",
+            "args": [
+                "--runTestsByPath",
+                "${file}",
+                "--config",
+                "jest.config.js"
+            ],
+            "cwd": "${workspaceFolder}/apps/api",
+            "envFile": "${workspaceFolder}/apps/api/.env",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        }
     ]
 }
