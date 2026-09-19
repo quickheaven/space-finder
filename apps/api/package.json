@@ -8,6 +8,8 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --passWithNoTests",
+    "test-services": "jest --passWithNoTests test/services",
+    "test-infra": "jest --passWithNoTests test/MonitorStack.test.ts",
     "watch": "tsc -w",
     "deploy": "cdk deploy --all --outputs-file ../../packages/cdk-outputs/outputs.json",
     "cdk": "cdk",
