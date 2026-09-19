@@ -38,6 +38,7 @@ export class CdkCicdStack extends cdk.Stack {
 
     new CodePipeline(this, "AwesomePipeline", {
       pipelineName: "AwesomePipeline",
+      crossAccountKeys: false, // Prevents creating a $1/mo KMS Customer Managed Key
       artifactBucket: pipelineArtifactBucket, // Pass the bucket to CodePipeline
       synth: new ShellStep("Synth", {
         input: CodePipelineSource.gitHub("quickheaven/space-finder", "main"),
