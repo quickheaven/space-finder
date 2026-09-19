@@ -41,5 +41,3 @@ docker-compose.yml
 # CDK
 cdk.out
 
-# jest snapshots
-__snapshots__
