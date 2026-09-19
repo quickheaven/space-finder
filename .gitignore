@@ -2,6 +2,7 @@
 
 # Dependencies
 node_modules
+.pnpm-store
 .pnp
 .pnp.js
 
@@ -41,3 +42,4 @@ docker-compose.yml
 # CDK
 cdk.out
 
+.pnpm-store/
