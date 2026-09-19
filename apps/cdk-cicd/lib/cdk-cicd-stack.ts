@@ -1,5 +1,6 @@
 import * as cdk from "aws-cdk-lib";
 import * as codebuild from "aws-cdk-lib/aws-codebuild";
+import * as s3 from "aws-cdk-lib/aws-s3";
 import {
   CodePipeline,
   CodePipelineSource,
@@ -11,28 +12,50 @@ export class CdkCicdStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    // 1. Create a dedicated, cost-optimized artifact bucket
+    const pipelineArtifactBucket = new s3.Bucket(
+      this,
+      "PipelineArtifactBucket",
+      {
+        encryption: s3.BucketEncryption.S3_MANAGED,
+        blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+
+        // Clean up bucket when stack is destroyed (optional for sandbox environments)
+        removalPolicy: cdk.RemovalPolicy.DESTROY,
+        autoDeleteObjects: true,
+
+        // 2. Lifecycle Rule: Automatically delete artifacts after 7 days
+        lifecycleRules: [
+          {
+            id: "ExpireOldArtifactsAndMultipartUploads",
+            enabled: true,
+            expiration: cdk.Duration.days(7), // Expire all objects older than 7 days
+            abortIncompleteMultipartUploadAfter: cdk.Duration.days(1), // Clean up failed/incomplete uploads
+          },
+        ],
+      },
+    );
+
     new CodePipeline(this, "AwesomePipeline", {
       pipelineName: "AwesomePipeline",
+      artifactBucket: pipelineArtifactBucket, // Pass the bucket to CodePipeline
       synth: new ShellStep("Synth", {
         input: CodePipelineSource.gitHub("quickheaven/space-finder", "main"),
         commands: [
+          "npm install -g pnpm",
           "pnpm config set store-dir .pnpm-store",
           "pnpm install --frozen-lockfile",
           "pnpm --filter cdk-cicd exec cdk synth",
         ],
-        primaryOutputDirectory: "cdk-cicd/cdk.out",
+        primaryOutputDirectory: "cdk.out",
       }),
 
-      // Cost Optimization & Guardrail Settings
       codeBuildDefaults: {
-        // 1. Switch compute to ARM / AWS Graviton (~20-30% cheaper per minute than x86)
         buildEnvironment: {
           buildImage: codebuild.LinuxArmBuildImage.AMAZON_LINUX_2_STANDARD_3_0,
-          computeType: codebuild.ComputeType.SMALL, // 3 GB RAM, 2 vCPUs
+          computeType: codebuild.ComputeType.SMALL,
         },
-        // 2. Prevent runaway jobs if pnpm hangs or waits for input
         timeout: cdk.Duration.minutes(15),
-        // 3. Cache pnpm store locally across build runs
         cache: codebuild.Cache.local(codebuild.LocalCacheMode.CUSTOM),
       },
     });
