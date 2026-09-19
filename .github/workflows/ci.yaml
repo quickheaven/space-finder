@@ -14,6 +14,7 @@ jobs:
       USER_POOL_ID: ${{ vars.USER_POOL_ID }}
       USER_POOL_CLIENT_ID: ${{ vars.USER_POOL_CLIENT_ID }}
       IDENTITY_POOL_ID: ${{ vars.IDENTITY_POOL_ID }}
+      SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
       TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
       TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}      
     steps:

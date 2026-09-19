@@ -17,7 +17,7 @@
     "test": {
       "dependsOn": ["^build"],
       "cache": false,
-      "env": ["USER_POOL_ID", "USER_POOL_CLIENT_ID", "TEST_USERNAME", "TEST_PASSWORD", "AWS_REGION", "IDENTITY_POOL_ID"]
+      "env": ["USER_POOL_ID", "USER_POOL_CLIENT_ID", "TEST_USERNAME", "TEST_PASSWORD", "AWS_REGION", "IDENTITY_POOL_ID", "SLACK_WEBHOOK_URL"]
     },
     "dev": {
       "cache": false,
