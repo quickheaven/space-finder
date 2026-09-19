@@ -29,6 +29,7 @@
     "source-map-support": "catalog:",
     "@types/uuid": "catalog:",
     "aws-amplify": "catalog:",
+    "aws-xray-sdk-core": "catalog:",    
     "uuid": "catalog:"    
   },
   "devDependencies": {
