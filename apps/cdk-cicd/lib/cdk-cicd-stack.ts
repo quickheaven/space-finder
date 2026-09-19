@@ -7,6 +7,7 @@ import {
   ShellStep,
 } from "aws-cdk-lib/pipelines";
 import { Construct } from "constructs";
+import { PipelineStage } from "./PipelineStage";
 
 export class CdkCicdStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -36,7 +37,7 @@ export class CdkCicdStack extends cdk.Stack {
       },
     );
 
-    new CodePipeline(this, "AwesomePipeline", {
+    const pipeline = new CodePipeline(this, "AwesomePipeline", {
       pipelineName: "AwesomePipeline",
       crossAccountKeys: false, // Prevents creating a $1/mo KMS Customer Managed Key
       artifactBucket: pipelineArtifactBucket, // Pass the bucket to CodePipeline
@@ -60,5 +61,11 @@ export class CdkCicdStack extends cdk.Stack {
         cache: codebuild.Cache.local(codebuild.LocalCacheMode.CUSTOM),
       },
     });
+
+    const testStage = pipeline.addStage(
+      new PipelineStage(this, "PipelineTestStage", {
+        stageName: "test",
+      }),
+    );
   }
 }
