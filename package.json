@@ -12,6 +12,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "esbuild": "catalog:",
     "husky": "^9.1.7",
     "prettier": "^3.7.4",
     "turbo": "^2.9.5",
