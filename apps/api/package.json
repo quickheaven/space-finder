@@ -11,6 +11,7 @@
     "test-services": "jest --passWithNoTests test/services",
     "test-infra": "jest --passWithNoTests test/MonitorStack.test.ts",
     "watch": "tsc -w",
+    "predeploy": "pnpm --filter space-finder-ui build",
     "deploy": "cdk deploy --all --outputs-file ../../packages/cdk-outputs/outputs.json",
     "cdk": "cdk",
     "lint": "eslint .",

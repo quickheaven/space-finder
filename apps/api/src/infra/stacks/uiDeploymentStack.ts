@@ -3,7 +3,7 @@ import { CloudFrontWebDistribution } from "aws-cdk-lib/aws-cloudfront";
 import { IBucket } from "aws-cdk-lib/aws-s3";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 import { Construct } from "constructs";
-import { existsSync } from "fs";
+import { existsSync, readdirSync } from "fs";
 import { join } from "path";
 
 interface UiDeploymentStackProps extends StackProps {
@@ -14,17 +14,9 @@ export class UiDeploymentStack extends Stack {
   constructor(scope: Construct, id: string, props: UiDeploymentStackProps) {
     super(scope, id, props);
 
-    const uiDir = join(
-      __dirname,
-      "..",
-      "..",
-      "..",
-      "..",
-      "space-finder-frontend",
-      "dist",
-    );
+    const uiDir = join(__dirname, "..", "..", "..", "..", "ui", "dist");
 
-    if (existsSync(uiDir)) {
+    if (existsSync(uiDir) && readdirSync(uiDir).length > 0) {
       new BucketDeployment(this, "space-finder-ui-deployment", {
         destinationBucket: props.deploymentBucket,
         sources: [Source.asset(uiDir)],
