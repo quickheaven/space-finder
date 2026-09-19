@@ -48,7 +48,7 @@ export class CdkCicdStack extends cdk.Stack {
           "pnpm install --frozen-lockfile",
           "pnpm --filter cdk-cicd exec cdk synth",
         ],
-        primaryOutputDirectory: "cdk.out",
+        primaryOutputDirectory: "apps/cdk-cicd/cdk.out",
       }),
 
       codeBuildDefaults: {
