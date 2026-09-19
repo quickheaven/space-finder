@@ -16,6 +16,7 @@ export class CdkCicdStack extends cdk.Stack {
       synth: new ShellStep("Synth", {
         input: CodePipelineSource.gitHub("quickheaven/space-finder", "main"),
         commands: [
+          "pnpm config set store-dir .pnpm-store",
           "pnpm install --frozen-lockfile",
           "pnpm --filter cdk-cicd exec cdk synth",
         ],
