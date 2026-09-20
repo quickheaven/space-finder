@@ -52,10 +52,17 @@ export default function Spaces(props: SpacesProps) {
   }
 
   return (
-    <div>
-      <h2>Welcome to the Spaces page!</h2>
-      {reservationText ? <h2>{reservationText}</h2> : undefined}
-      {renderSpaces()}
+    <div className="spacesPage">
+      <div className="page-heading">
+        <div>
+          <div className="eyebrow">Find your next place</div>
+          <h2>Spaces worth settling into.</h2>
+        </div>
+      </div>
+      {reservationText ? (
+        <p className="successMessage">{reservationText}</p>
+      ) : undefined}
+      <div className="spacesGrid">{renderSpaces()}</div>
     </div>
   );
 }

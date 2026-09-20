@@ -59,8 +59,8 @@ export class DataService {
     const command = new PutObjectCommand({
       Bucket: DataStack.SpaceFinderPhotosBucketName,
       Key: file.name,
-      ACL: "public-read",
-      Body: file,
+      Body: new Uint8Array(await file.arrayBuffer()),
+      ContentType: file.type || "application/octet-stream",
     });
     await this.s3Client.send(command);
     return `https://${command.input.Bucket}.s3.${this.awsRegion}.amazonaws.com/${command.input.Key}`;

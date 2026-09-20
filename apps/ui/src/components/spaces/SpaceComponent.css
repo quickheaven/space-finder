@@ -1,17 +1,19 @@
 .spaceComponent {
-    display: inline-block;
-    width: 350px;
-    margin: 5px;
-    overflow: auto;
+    background: #fff;
+    border: 1px solid #dbe5e7;
+    border-radius: 18px;
+    box-shadow: 0 14px 35px rgba(23, 36, 58, 0.08);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    transition: box-shadow 180ms ease, transform 180ms ease;
 }
+.spaceComponent:hover { box-shadow: 0 20px 42px rgba(23, 36, 58, 0.14); transform: translateY(-4px); }
+.spaceComponent img { aspect-ratio: 16 / 10; background: #dce9e9; object-fit: cover; width: 100%; }
+.spaceDetails { padding: 20px; }
+.name { color: #17243a; display: block; font-family: Georgia, serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 6px; }
+.location { color: #68798a; display: block; font-size: 0.92rem; margin-bottom: 18px; }
+.spaceComponent button, .primary-action { background: #62c7b1; border-radius: 999px; color: #17243a; font-weight: 800; padding: 12px 18px; transition: background 180ms ease, transform 180ms ease; }
+.spaceComponent button:hover, .primary-action:hover { background: #a4eadb; transform: translateY(-1px); }
 
-img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.name {
-    text-align: center;
-    text-transform: uppercase;
-    color: rgb(43, 159, 226);
-}

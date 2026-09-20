@@ -7,25 +7,26 @@ export default function NavBar({ userName }: NavBarProps) {
   function renderLoginLogout() {
     if (userName) {
       return (
-        <NavLink to="/logout" style={{ float: "right" }}>
+        <NavLink className="account-link" to="/logout">
           {userName}
         </NavLink>
       );
-    } else {
-      return (
-        <NavLink to="/login" style={{ float: "right" }}>
-          Login
-        </NavLink>
-      );
     }
+    return (
+      <NavLink className="account-link" to="/login">
+        Login
+      </NavLink>
+    );
   }
 
   return (
     <div className="navbar">
-      <NavLink to={"/"}>Home</NavLink>
-      <NavLink to={"/profile"}>Profile</NavLink>
-      <NavLink to={"/spaces"}>Spaces</NavLink>
-      <NavLink to={"/createSpace"}>Create space</NavLink>
+      <NavLink className="brand" to="/">
+        Space Finder
+      </NavLink>
+      <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/spaces">Spaces</NavLink>
+      <NavLink to="/createSpace">Create space</NavLink>
       {renderLoginLogout()}
     </div>
   );

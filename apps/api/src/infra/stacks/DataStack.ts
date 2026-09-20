@@ -7,6 +7,7 @@ import {
 } from "aws-cdk-lib/aws-dynamodb";
 import { Construct } from "constructs";
 import { getSuffixFromStack } from "../Utils";
+import { AnyPrincipal, Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import {
   BlockPublicAccess,
   Bucket,
@@ -48,6 +49,14 @@ export class DataStack extends Stack {
         restrictPublicBuckets: false,
       },
     });
+    this.photosBucket.addToResourcePolicy(
+      new PolicyStatement({
+        effect: Effect.ALLOW,
+        principals: [new AnyPrincipal()],
+        actions: ["s3:GetObject"],
+        resources: [this.photosBucket.arnForObjects("*")],
+      }),
+    );
     new CfnOutput(this, "SpaceFinderPhotosBucketName", {
       value: this.photosBucket.bucketName,
     });

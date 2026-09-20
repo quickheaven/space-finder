@@ -46,22 +46,23 @@ export default function CreateSpace({ dataService }: CreateSpaceProps) {
       return <NavLink to={"/login"}>Please login</NavLink>;
     }
     return (
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>Name:</label>
-        <br />
-        <input value={name} onChange={(e) => setName(e.target.value)} />
-        <br />
-        <label>Location:</label>
-        <br />
-        <input value={location} onChange={(e) => setLocation(e.target.value)} />
-        <br />
-        <label>Photo:</label>
-        <br />
-        <input type="file" onChange={(e) => setPhotoUrl(e)} />
-        <br />
+      <form className="formCard" onSubmit={(e) => handleSubmit(e)}>
+        <label htmlFor="space-name">Name</label>
+        <input
+          id="space-name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <label htmlFor="space-location">Location</label>
+        <input
+          id="space-location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <label htmlFor="space-photo">Photo</label>
+        <input id="space-photo" type="file" onChange={(e) => setPhotoUrl(e)} />
         {renderPhoto()}
-        <br />
-        <input type="submit" value="Create space" />
+        <input className="primary-action" type="submit" value="Create space" />
       </form>
     );
   }

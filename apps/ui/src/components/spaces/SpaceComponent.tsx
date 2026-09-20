@@ -18,13 +18,13 @@ export default function SpaceComponent(props: SpaceComponentProps) {
   return (
     <div className="spaceComponent">
       {renderImage()}
-      <label className="name">{props.name}</label>
-      <br />
-      <label className="location">{props.location}</label>
-      <br />
-      <button onClick={() => props.reserveSpace(props.id, props.name)}>
-        Reserve
-      </button>
+      <div className="spaceDetails">
+        <label className="name">{props.name}</label>
+        <label className="location">{props.location}</label>
+        <button onClick={() => props.reserveSpace(props.id, props.name)}>
+          Reserve
+        </button>
+      </div>
     </div>
   );
 }

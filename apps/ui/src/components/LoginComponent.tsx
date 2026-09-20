@@ -42,24 +42,27 @@ export default function LoginComponent({
   }
 
   return (
-    <div role="main">
+    <div className="formPage" role="main">
       {loginSuccess && <Navigate to="/profile" replace={true} />}
-      <h2>Please login</h2>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>User name</label>
-        <input value={userName} onChange={(e) => setUserName(e.target.value)} />
-        <br />
-        <label>Password</label>
+      <div className="eyebrow">Welcome back</div>
+      <h2>Sign in to Space Finder</h2>
+      <form className="formCard" onSubmit={(e) => handleSubmit(e)}>
+        <label htmlFor="username">User name</label>
         <input
+          id="username"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           type="password"
         />
-        <br />
-        <input type="submit" value="Login" />
+        <input className="primary-action" type="submit" value="Login" />
       </form>
-      <br />
-      {renderLoginResult()}
+      {errorMessage && <p className="errorMessage">{errorMessage}</p>}
     </div>
   );
 }

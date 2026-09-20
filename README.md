@@ -77,3 +77,9 @@ TEST_USERNAME=
 TEST_PASSWORD=
 SLACK_WEBHOOK_URL=
 ```
+
+## Screenshots
+
+Place committed application screenshots and development images in [`docs/images/`](docs/images/). Use descriptive lowercase filenames, for example `spaces-page.png` or `architecture-overview.png`.
+
+Screenshots will be added here once the relevant images are selected.

@@ -14,84 +14,54 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.wrapper {
-  margin: auto;
-  width: 70%;
+:root {
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: #17243a;
+  background: #edf3f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-a {
-  font-weight: 500;
-  color: rgb(43, 159, 226);
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+* { box-sizing: border-box; }
+body { min-width: 320px; margin: 0; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button { border: 0; cursor: pointer; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #62c7b1; outline-offset: 3px; }
 
-body {
-  margin: 0;
-  place-items: center;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-/* Add a black background color to the top navigation */
+.wrapper { min-height: 100vh; }
 .navbar {
-  overflow: hidden;
-  background-color: #564949de;
+  align-items: center;
+  background: #17243a;
+  box-shadow: 0 8px 24px rgba(23, 36, 58, 0.16);
+  display: flex;
+  gap: 8px;
+  padding: 16px clamp(20px, 5vw, 72px);
+}
+.navbar .brand {
+  color: #8ce0cd;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-right: auto;
+  padding-right: 24px;
+}
+.navbar a:not(.brand) {
+  border-radius: 999px;
+  color: #d8e2e8;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  transition: background 180ms ease, color 180ms ease;
+}
+.navbar a:not(.brand):hover, .navbar a.active:not(.brand) { background: #2b3c55; color: #fff; }
+.navbar .account-link { background: #62c7b1; color: #17243a; margin-left: 8px; }
+.navbar .account-link:hover { background: #a4eadb; color: #17243a; }
+
+@media (max-width: 720px) {
+  .navbar { flex-wrap: wrap; gap: 4px; padding: 14px 16px; }
+  .navbar .brand { flex-basis: 100%; margin-bottom: 4px; }
+  .navbar a:not(.brand) { font-size: 0.78rem; padding: 8px 9px; }
 }
 
-/* Style the links inside the navigation bar */
-.navbar a {
-  float: left;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.navbar a.active {
-  background-color: #8f959c;
-  color: white;
-}

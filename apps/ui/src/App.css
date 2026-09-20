@@ -1,41 +1,49 @@
-#root {
-  max-width: 1280px;
+#root { min-height: 100vh; }
+#root > .wrapper > :not(.navbar) {
   margin: 0 auto;
-  text-align: center;
+  max-width: 1180px;
+  padding: clamp(32px, 6vw, 72px) clamp(20px, 5vw, 72px);
+}
+h1, h2, h3, p { margin-top: 0; }
+h1, h2 { color: #17243a; font-family: Georgia, serif; letter-spacing: -0.025em; }
+h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 0.98; }
+h2 { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1; }
+.page-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 32px; }
+.eyebrow { color: #268b83; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.14em; margin-bottom: 12px; text-transform: uppercase; }
+.muted { color: #607184; }
+
+.spacesGrid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.formPage { max-width: 680px !important; }
+.formCard {
+  background: #fff;
+  border: 1px solid #dbe5e7;
+  border-radius: 18px;
+  box-shadow: 0 14px 35px rgba(23, 36, 58, 0.08);
+  display: grid;
+  gap: 10px;
+  padding: clamp(22px, 4vw, 36px);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.formCard label { color: #40536a; font-size: 0.86rem; font-weight: 800; margin-top: 8px; }
+.formCard input:not([type="submit"]):not([type="file"]) {
+  background: #f4f7f7;
+  border: 1px solid #cbd9dc;
+  border-radius: 10px;
+  color: #17243a;
+  min-height: 46px;
+  padding: 10px 13px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.formCard input[type="file"] { color: #607184; padding: 8px 0; }
+.primary-action { margin-top: 14px; width: fit-content; }
+.errorMessage, .successMessage { border-radius: 10px; font-weight: 700; margin-top: 18px; padding: 12px 16px; }
+.errorMessage { background: #ffe5df; color: #a54238; }
+.successMessage { background: #dceee6; color: #28634d; }
+
+@media (max-width: 600px) {
+  .page-heading { display: block; }
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
