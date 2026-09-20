@@ -80,6 +80,18 @@ SLACK_WEBHOOK_URL=
 
 ## Screenshots
 
-Place committed application screenshots and development images in [`docs/images/`](docs/images/). Use descriptive lowercase filenames, for example `spaces-page.png` or `architecture-overview.png`.
+### AWS Pipeline
 
-Screenshots will be added here once the relevant images are selected.
+The project includes an AWS deployment pipeline for automating infrastructure and application delivery.
+
+![AWS deployment pipeline](docs/images/AWS%20Pipeline.png)
+
+### Application
+
+Create a new space with location details and an optional photo upload:
+
+![Create space screen](docs/images/Upload.png)
+
+Browse available spaces and reserve one from the application:
+
+![Spaces screen](docs/images/Spaces.png)
