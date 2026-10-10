@@ -2,6 +2,25 @@
 
 A full-stack serverless application built with AWS and TypeScript, organized as a pnpm monorepo.
 
+## Overview
+
+Space Finder helps users discover and reserve shared spaces with a modern serverless architecture, a React frontend, and AWS-managed infrastructure.
+
+<div align="center">
+  <p><strong>Create a space with location details and an optional photo upload.</strong></p>
+  <img src="docs/images/Upload.png" alt="Create space screen" width="820" />
+</div>
+
+<div align="center">
+  <p><strong>Browse available spaces and reserve one from the application.</strong></p>
+  <img src="docs/images/Spaces.png" alt="Spaces screen" width="820" />
+</div>
+
+<div align="center">
+  <p><strong>AWS deployment pipeline for automating infrastructure and application delivery.</strong></p>
+  <img src="docs/images/AWS%20Pipeline.png" alt="AWS deployment pipeline" width="1000" />
+</div>
+
 ## Architecture
 
 - **Backend (apps/api)** — AWS CDK app that provisions and manages all cloud infrastructure
@@ -33,7 +52,7 @@ A full-stack serverless application built with AWS and TypeScript, organized as 
 
 ## Project Structure
 
-```
+```text
 apps/
   api/        # CDK infrastructure + Lambda handlers
   ui/         # React frontend
@@ -68,7 +87,7 @@ pnpm test
 
 Create `apps/api/.env` based on the following:
 
-```
+```env
 AWS_REGION=
 USER_POOL_ID=
 USER_POOL_CLIENT_ID=
@@ -78,20 +97,3 @@ TEST_PASSWORD=
 SLACK_WEBHOOK_URL=
 ```
 
-## Screenshots
-
-### AWS Pipeline
-
-The project includes an AWS deployment pipeline for automating infrastructure and application delivery.
-
-![AWS deployment pipeline](docs/images/AWS%20Pipeline.png)
-
-### Application
-
-Create a new space with location details and an optional photo upload:
-
-![Create space screen](docs/images/Upload.png)
-
-Browse available spaces and reserve one from the application:
-
-![Spaces screen](docs/images/Spaces.png)
